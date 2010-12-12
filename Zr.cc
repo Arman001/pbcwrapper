@@ -35,7 +35,7 @@ Zr::Zr(const Pairing &e, const unsigned char *data,
   elementPresent = e.isPairingPresent();
   if(elementPresent){
 	element_init_Zr(r, *(pairing_t*)&e.getPairing());
-	if( base == 16){
+	if( base == 0){
 	  if(!element_from_bytes(r,*(unsigned char**)&data))
 		throw CorruptDataException();}
 	else{

@@ -28,12 +28,18 @@ public:
   //Create using a ASCIIZ string
   Pairing(const char * buf);
 
+  //Create using a string
+  Pairing(const string &buf);
+
   //Create using a File Stream
   Pairing(const FILE * buf);
 
   //Destructor
   ~Pairing();
 	
+  // Initialize using a string
+  void init(const string &buf);
+
   const pairing_t& getPairing() const;
 
   //Is Pairing Symmetric  

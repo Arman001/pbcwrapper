@@ -24,6 +24,19 @@ Pairing::Pairing(const char * buf){
 	  pairingPresent = true;
 }
 
+//Create using a string
+Pairing::Pairing(const string &buf){
+    init(buf);
+}
+
+void Pairing::init(const string &buf) {
+    if (pairing_init_set_str(e, buf.c_str())) {
+	pairingPresent = false;
+    } else {
+	pairingPresent = true;
+    }
+}
+
 //Create using a File Stream
 Pairing::Pairing(const FILE * buf){
   char s[8192];

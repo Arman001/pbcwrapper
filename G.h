@@ -1,6 +1,7 @@
 #ifndef __G_H__
 #define __G_H__
 
+#include <iostream>
 #include "Pairing.h"
 #include "Zr.h"
 
@@ -67,5 +68,8 @@ protected:
 
 private:
   void nullify();
+
+  friend ostream& operator<<(ostream &os, const G &g);
+  friend istream& operator>>(istream &is, G &g);
 };
 #endif

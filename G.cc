@@ -191,3 +191,27 @@ void G::dump(FILE *f, const char *label,
 	fprintf(f,"Element_Not_Defined.");
   fprintf(f,"\n");
 }	
+
+ostream& operator<<(ostream &os, const G &g)
+{
+    if (g.elementPresent) {
+	size_t len = element_length_in_bytes(*(element_t*)&(g.g));
+	unsigned char data[len];
+	element_to_bytes(data, *(element_t*)&(g.g));
+	os.write((const char *)data, len);
+    }
+    return os;
+}
+
+istream& operator>>(istream &is, G &g)
+{
+    if (g.elementPresent) {
+	size_t len = element_length_in_bytes(*(element_t*)&(g.g));
+	unsigned char buf[len];
+	is.read((char *)buf, len);
+	element_from_bytes(*(element_t*)&(g.g), buf);
+    } else {
+	throw UndefinedPairingException();
+    }
+    return is;
+}

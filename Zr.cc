@@ -35,10 +35,15 @@ Zr::Zr(const Pairing &e, const unsigned char *data,
   elementPresent = e.isPairingPresent();
   if(elementPresent){
 	element_init_Zr(r, *(pairing_t*)&e.getPairing());
+	int elen = element_length_in_bytes(r);
 	if( base == 0){
-	  if(!element_from_bytes(r,*(unsigned char**)&data))
-		throw CorruptDataException();}
-	else{
+	  unsigned char *tmp = new unsigned char[elen];
+	  memset(tmp, 0, elen);
+	  memmove(tmp + elen - len, data, len);
+	  int res = element_from_bytes(r,tmp);
+	  delete[] tmp;
+	  if (!res) throw CorruptDataException();
+	} else {
 	  char *tmp = new char[len+1];
 	  strncpy(tmp,(const char*)data,len);
 	  tmp[len] = '\0';

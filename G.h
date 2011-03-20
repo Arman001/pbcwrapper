@@ -77,7 +77,7 @@ private:
 template <class T>
 class GPP {
 public:
-    GPP(const T &base, const Pairing &pairing):pairing(pairing) {
+    GPP(const Pairing &pairing, const T &base):pairing(pairing) {
 	element_pp_init(g_pp, *(element_t*)&base.getElement());
     }
     ~GPP() { element_pp_clear(g_pp); }

@@ -31,9 +31,9 @@ int main(int argc, char **argv)
   r.dump(stdout,"new r",10);
   GT LHS = e(p,q)^r;
   G1 pr(p^r);
-  GPP<G1> pp(p, e);
-  GPP<G2> qp(q, e);
-  GPP<GT> LHSp(LHS, e);
+  GPP<G1> pp(e, p);
+  GPP<G2> qp(e, q);
+  GPP<GT> LHSp(e, LHS);
   struct timeval st, et;
   const int niter = 1000;
   gettimeofday(&st, NULL);

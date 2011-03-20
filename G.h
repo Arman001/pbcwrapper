@@ -72,4 +72,27 @@ private:
   friend ostream& operator<<(ostream &os, const G &g);
   friend istream& operator>>(istream &is, G &g);
 };
+
+// Preprocessing classes
+template <class T>
+class GPP {
+public:
+    GPP(const T &base, const Pairing &pairing):pairing(pairing) {
+	element_pp_init(g_pp, *(element_t*)&base.getElement());
+    }
+    ~GPP() { element_pp_clear(g_pp); }
+
+    const T operator^(const Zr &exp) const {
+	T res(pairing);
+	element_pp_pow_zn(*(element_t*)&res.getElement(),
+			    *(element_t*)&exp.getElement(),
+			    *(element_pp_t*)&g_pp);
+	return res;
+    }
+
+private:
+    element_pp_t g_pp;
+    const Pairing &pairing;
+};
+
 #endif

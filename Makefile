@@ -1,7 +1,7 @@
 SRCS=$(wildcard *.cc)
 OBJS=$(subst .cc,.o,$(SRCS))
 
-CXXFLAGS=-g -O2 -Wall
+CXXFLAGS=-g -O2 -Wall -I ~/.local/include/
 
 all: libPBC.a Testing
 
@@ -11,7 +11,7 @@ libPBC.a: $(COMMON_OBJS)
 	ar rcs $@ $^
 
 Testing: Testing.o libPBC.a
-	g++ -g -static -o $@ $^ -lpbc -lgmp
+	g++ -g -static -o $@ $^ -L ~/.local/lib -Wl,-rpath ~/.local/lib  -lpbc -lgmp
 
 clean:
 	-rm -f $(OBJS)

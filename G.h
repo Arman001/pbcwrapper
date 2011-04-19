@@ -10,6 +10,17 @@ using namespace std;
 class G {//Group
 public:
 
+void pow2(G1 &gout, const G1 &base1, const Zr &exp1, const G1 &base2, const Zr &exp2)
+{
+G::pow2(gout,base1,exp1,base2,exp2);
+}
+
+void pow3(G1 &gout, const G1 &base1, const Zr &exp1, const G1 &base2, const Zr &exp2, const G1 &base3, const Zr &exp3)
+{
+G::pow3(gout,base1,exp1,base2,exp2,base3,exp3);
+}
+
+
   //Destructor
   ~G();
 

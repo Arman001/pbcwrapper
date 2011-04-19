@@ -6,6 +6,10 @@ using namespace std;
 
 class GT: public G {
 public:
+	
+static GT pow2(const Pairing &e, const GT &base1, const Zr &exp1, const GT &base2, const Zr &exp2);
+static GT pow3(const Pairing &e, const GT &base1, const Zr &exp1, const GT &base2, const Zr &exp2, const GT &base3, const Zr &exp3);
+	
   GT(){};
 
  //Create and initialize an element

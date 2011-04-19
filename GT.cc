@@ -2,6 +2,20 @@
 #include <cstring>
 #include "PBCExceptions.h"
 
+GT GT::pow2(const Pairing &e, const GT &base1, const Zr &exp1, const GT &base2, const Zr &exp2)
+{
+	GT gout(e, true);
+	G::pow2(gout, base1, exp1, base2, exp2);
+	return gout;
+}
+
+GT GT::pow3(const Pairing &e, const GT &base1, const Zr &exp1, const GT &base2, const Zr &exp2, const GT &base3, const Zr &exp3)
+{
+	GT gout(e, true);
+	G::pow3(gout, base1, exp1, base2, exp2, base3, exp3);
+	return gout;
+}
+
 //Create and initialize an element
 GT::GT(const Pairing &e): G(e){
   if(elementPresent){

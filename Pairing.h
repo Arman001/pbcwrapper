@@ -40,6 +40,8 @@ public:
   // Initialize using a string
   void init(const string &buf);
 
+  const string get_pbc_param_t() const;
+
   const pairing_t& getPairing() const;
 
   //Is Pairing Symmetric  
@@ -119,6 +121,7 @@ private:
 
   pairing_t e;
   bool pairingPresent;
+  string pbc_param;
 };
 
 #endif

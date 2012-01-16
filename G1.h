@@ -7,9 +7,6 @@ using namespace std;
 class G1: public G {
 public:
 	
-static G1 pow2(const Pairing &e, const G1 &base1, const Zr &exp1, const G1 &base2, const Zr &exp2);
-static G1 pow3(const Pairing &e, const G1 &base1, const Zr &exp1, const G1 &base2, const Zr &exp2, const G1 &base3, const Zr &exp3);
-	
   G1(){};
 
  //Create and initialize an element

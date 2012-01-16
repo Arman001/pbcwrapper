@@ -2,20 +2,6 @@
 #include <cstring>
 #include "PBCExceptions.h"
 
-G2 G2::pow2(const Pairing &e, const G2 &base1, const Zr &exp1, const G2 &base2, const Zr &exp2)
-{
-	G2 gout(e, true);
-	G::pow2(gout, base1, exp1, base2, exp2);
-	return gout;
-}
-
-G2 G2::pow3(const Pairing &e, const G2 &base1, const Zr &exp1, const G2 &base2, const Zr &exp2, const G2 &base3, const Zr &exp3)
-{
-	G2 gout(e, true);
-	G::pow3(gout, base1, exp1, base2, exp2, base3, exp3);
-	return gout;
-}
-
 //Create and initialize an element
 G2::G2(const Pairing &e): G(e){
   if(elementPresent){

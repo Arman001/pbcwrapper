@@ -8,20 +8,24 @@
 Pairing::Pairing(const char * buf, size_t len){
   //pairing_init_inp_buf(e, buf, len);
   //pairingPresent = true;
-  if (pairing_init_set_buf(e, buf, len))
-	  pairingPresent = false;
-	else
-	  pairingPresent = true;
+  if (pairing_init_set_buf(e, buf, len)) {
+	pairingPresent = false;
+  } else {
+	pairingPresent = true;
+	pbc_param = string(buf, len);
+  }
 }
 
 //Create using a ASCIIZ string
 Pairing::Pairing(const char * buf){
+  pbc_param = string(buf);
   //pairing_init_inp_str(e,*(FILE**) &stream);
   //pairingPresent = true;
-  if (pairing_init_set_str(e, buf))
-	  pairingPresent = false;
-	else
-	  pairingPresent = true;
+  if (pairing_init_set_str(e, buf)) {
+	pairingPresent = false;
+  } else {
+	pairingPresent = true;
+  }
 }
 
 //Create using a string
@@ -34,6 +38,7 @@ void Pairing::init(const string &buf) {
 	pairingPresent = false;
     } else {
 	pairingPresent = true;
+        pbc_param = string(buf);
     }
 }
 
@@ -42,9 +47,11 @@ Pairing::Pairing(const FILE * buf){
   char s[8192];
   size_t count = fread(s, 1, 8192, *(FILE **) &buf);
   pairingPresent = false;	  
-  if (count) 
-	if (!pairing_init_set_buf(e, s, count)) 
+  if (count)
+	if (!pairing_init_set_buf(e, s, count))  {
 	  pairingPresent = true;
+          pbc_param = string(s, count);
+        }
 }
 
 //Destructor
@@ -55,7 +62,14 @@ Pairing::~Pairing(){
   }
 }
 
-const pairing_t&  Pairing::getPairing() const{
+const string Pairing::get_pbc_param_t() const {
+  if (pairingPresent)
+	return pbc_param;
+  else
+	throw UndefinedPairingException();
+}
+
+const pairing_t&  Pairing::getPairing() const {
   if (pairingPresent)
 	return e;
   else

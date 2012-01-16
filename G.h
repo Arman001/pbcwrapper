@@ -10,10 +10,6 @@ using namespace std;
 class G {//Group
 public:
 
-static void pow2(G &gout, const G &base1, const Zr &exp1, const G &base2, const Zr &exp2);
-static void pow3(G &gout, const G &base1, const Zr &exp1, const G &base2, const Zr &exp2, const G &base3, const Zr &exp3);
-
-
   //Destructor
   ~G();
 

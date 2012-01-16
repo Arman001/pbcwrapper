@@ -1,19 +1,6 @@
 #include "G.h"
 #include "PBCExceptions.h"
 
-void G::pow2(G &gout, const G &base1, const Zr &exp1, const G &base2, const Zr &exp2){
-  if(gout.elementPresent && base1.isElementPresent() && base2.isElementPresent() && exp1.isElementPresent() && exp2.isElementPresent()){
-        element_pow2_zn(*(element_t*)&gout.getElement(), *(element_t*)&base1.getElement(), *(element_t*)&exp1.getElement(), *(element_t*)&base2.getElement(), *(element_t*)&exp2.getElement());
-  }else throw UndefinedElementException();
-}
-
-void G::pow3(G &gout, const G &base1, const Zr &exp1, const G &base2, const Zr &exp2, const G &base3, const Zr &exp3){
-  if(gout.elementPresent && base1.isElementPresent() && base2.isElementPresent() && base3.isElementPresent() && exp1.isElementPresent() && exp2.isElementPresent() && exp3.isElementPresent()){
-        element_pow3_zn(*(element_t*)&gout.getElement(), *(element_t*)&base1.getElement(), *(element_t*)&exp1.getElement(), *(element_t*)&base2.getElement(), *(element_t*)&exp2.getElement(), *(element_t*)&base3.getElement(), *(element_t*)&exp3.getElement());
-  }else throw UndefinedElementException();
-}
-
-
 //Intialize with another element and assign identity or same element
 G::G(const G &h, bool identity){
   elementPresent = h.isElementPresent();

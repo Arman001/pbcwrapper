@@ -17,8 +17,7 @@ comfortable. As a salient feature of these wrapper classes, to improve
 the code readability, we have included operator overloading.
 
 USAGE: 
-This version is compatible with the current version 0.5.6 of the PBC
-library.
+This version is compatible with at least version 0.5.6 of the PBC library.
 
 - First, install the PBC library as described here and set the library
 path as described here. After that, decompress this wrapper class

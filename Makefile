@@ -3,7 +3,9 @@ OBJS=$(subst .cc,.o,$(SRCS))
 
 CXXFLAGS=-g -O2 -Wall -I ~/usr/local/include/
 
-all: libPBC.a Testing
+TARGETS = libPBC.a Testing
+
+all: $(TARGETS)
 
 COMMON_OBJS=Pairing.o G.o G1.o G2.o GT.o Zr.o PPPairing.o
 
@@ -15,6 +17,9 @@ Testing: Testing.o libPBC.a
 
 clean:
 	-rm -f $(OBJS)
+
+veryclean: clean
+	-rm -f $(TARGETS)
 
 depend:
 	makedepend -Y -- $(CXXFLAGS) -- $(SRCS) 2>/dev/null

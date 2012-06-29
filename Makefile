@@ -1,7 +1,7 @@
 SRCS=$(wildcard *.cc)
 OBJS=$(subst .cc,.o,$(SRCS))
 
-CXXFLAGS=-g -O2 -Wall -I ~/usr/local/include/
+CXXFLAGS=-g -O2 -Wall
 
 TARGETS = libPBC.a Testing
 

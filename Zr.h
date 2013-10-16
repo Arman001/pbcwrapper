@@ -22,7 +22,7 @@ public:
   //Create an element from import 
   //Traditional Import, bool is not imported
   Zr(const Pairing &e, const unsigned char *data, 
-	 unsigned short len, unsigned short base = 16);
+	 unsigned short len, unsigned short base = 0);
 
   //Create an element from hash
   Zr(const Pairing &e, const void *data, 

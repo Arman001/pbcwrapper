@@ -21,7 +21,7 @@ static G2 pow3(const Pairing &e, const G2 &base1, const Zr &exp1, const G2 &base
   //Create an element from import 
   G2(const Pairing &e, const unsigned char *data, 
 	 unsigned short len, bool compressed = false, 
-	 unsigned short base = 16);
+	 unsigned short base = 0);
 
   //Create an element from hash
   G2(const Pairing &e, const void *data, 

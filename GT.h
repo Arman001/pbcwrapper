@@ -20,7 +20,7 @@ static GT pow3(const Pairing &e, const GT &base1, const Zr &exp1, const GT &base
 
   //Create an element from import 
   GT(const Pairing &e, const unsigned char *data, 
-	 unsigned short len, unsigned short base = 16);
+	 unsigned short len, unsigned short base = 0);
 
   //Create an element from hash
   GT(const Pairing &e, const void *data, 

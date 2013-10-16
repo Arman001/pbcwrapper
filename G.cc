@@ -171,7 +171,7 @@ void G::setElement(const unsigned char *data, unsigned short len,
 	  if(!element_from_bytes_compressed(g,*(unsigned char**)&data))
 		throw CorruptDataException();}
 	else {
-	  if( base == 16){
+	  if( base == 0 ){
 		if(!element_from_bytes(g,*(unsigned char**)&data))
 		  throw CorruptDataException();}
 	  else{

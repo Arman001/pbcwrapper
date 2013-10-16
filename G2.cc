@@ -40,23 +40,7 @@ G2::G2(const Pairing &e, const unsigned char *data,
 	   unsigned short base): G(e){
   if(elementPresent){
 	element_init_G2(g, *(pairing_t*)&e.getPairing());
-	if (compressed){
-	  if(!element_from_bytes_compressed(g,*(unsigned char**)&data))
-		throw CorruptDataException();}
-	else
-	  if( base == 16){
-		if(!element_from_bytes(g,*(unsigned char**)&data))
-		  throw CorruptDataException();}
-	  else{
-		char *tmp = new char[len+1];
-		strncpy(tmp,(const char*)data,len);
-		tmp[len] = '\0';
-		if(!element_set_str(g, tmp, base)){
-		  delete[] tmp;
-		  throw CorruptDataException();
-		}
-		delete[] tmp;
-	  }
+	importElement(data, len, compressed, base);
   }else throw UndefinedPairingException();
 }
 

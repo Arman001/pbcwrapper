@@ -1,3 +1,4 @@
+#include <string.h>
 #include "G.h"
 #include "PBCExceptions.h"
 
@@ -126,6 +127,32 @@ void G::setElement(const element_t& el){
   element_set(g, *(element_t*)&el);
 }
 
+void G::importElement(const unsigned char *data, unsigned short len,
+    bool compressed, unsigned short base)
+{
+    if (compressed) {
+      if (base != 0 || len != element_length_in_bytes_compressed(g) ||
+	  !element_from_bytes_compressed(g,*(unsigned char**)&data)) {
+	    throw CorruptDataException();
+      }
+    } else {
+      if( base == 0 ) {
+	    if(len != element_length_in_bytes(g) ||
+	       !element_from_bytes(g,*(unsigned char**)&data)) {
+	      throw CorruptDataException();
+	    }
+      } else {
+	    char *tmp = new char[len+1];
+	    strncpy(tmp,(const char*)data,len);
+	    tmp[len] = '\0';
+	    if(!element_set_str(g, tmp, base)){
+	      delete[] tmp;
+	      throw CorruptDataException();
+	    }
+	    delete[] tmp;
+      }
+    }
+}
 
 /*
 //Set element from hash

@@ -37,6 +37,9 @@ Zr::Zr(const Pairing &e, const unsigned char *data,
 	element_init_Zr(r, *(pairing_t*)&e.getPairing());
 	int elen = element_length_in_bytes(r);
 	if( base == 0){
+	  if (len > elen) {
+	      throw CorruptDataException();
+	  }
 	  unsigned char *tmp = new unsigned char[elen];
 	  memset(tmp, 0, elen);
 	  memmove(tmp + elen - len, data, len);

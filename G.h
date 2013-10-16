@@ -70,6 +70,9 @@ protected:
   const G inverse() const;
   const G square() const;
 
+  void importElement(const unsigned char *data, unsigned short len,
+      bool compressed, unsigned short base);
+
 private:
   void nullify();
 
